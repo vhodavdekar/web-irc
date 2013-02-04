@@ -4,10 +4,11 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
+  , logs = require('./routes/logs')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , irc_lib = require('./lib/irc_lib');
+
 
 var app = express();
 
@@ -29,9 +30,11 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/logs', logs.get_logs);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+    irc_lib.create_new_client('127.0.0.1', 'testclient', {
+	channels: ['#test', '#test2'],
+	debug: true
+    });
 });
