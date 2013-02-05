@@ -4,7 +4,8 @@ block content
     div(class='container)
         form(class='form-signin', action='/user/new', method='post')
             h2(class='form-signin-heading') Login
-            input(class='input-block-level', type='password')
-            input(class='btn btn-large btn-primary form-buttons', type='submit', value='Sign In')
-            a(class='btn btn-large btn-primary', href='/new_user') New User
-            p If you have never done this before, please pick a new passphrase by clicking on the new user link.
+            input(class='input-block-level', type='password', name='passphrase', placeholder='Passphrase')
+            span(class='help-block') If you have never done this before, please pick a new passphrase by clicking on the new user link.
+            div(class='form-action')
+                input(class='btn btn-large btn-primary form-buttons', type='submit', value='Sign In')
+                a(class='btn btn-large btn-primary', href='/new_user') New User
