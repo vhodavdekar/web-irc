@@ -4,6 +4,7 @@
  */
 
 var express = require('express')
+  , user = require('./routes/user')
   , logs = require('./routes/logs')
   , http = require('http')
   , path = require('path')
@@ -30,7 +31,9 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/logs', logs.get_logs);
+app.get('/', user.login);
+app.get('/user/login', user.login);
+app.post('/user/new', user.login);
 
 http.createServer(app).listen(app.get('port'), function(){
     irc_lib.create_new_client('127.0.0.1', 'testclient', {
