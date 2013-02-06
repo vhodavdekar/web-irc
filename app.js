@@ -33,7 +33,7 @@ app.configure('development', function(){
 
 app.get('/', user.login);
 app.get('/user/login', user.login);
-app.post('/user/new', user.login);
+app.post('/user/new', user.new_user);
 
 http.createServer(app).listen(app.get('port'), function(){
     irc_lib.create_new_client('127.0.0.1', 'testclient', {
