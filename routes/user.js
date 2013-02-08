@@ -1,4 +1,4 @@
-// Consists of all the user releted controllers.
+// Consists of all the user related controllers.
 
 
 var user_lib = require('../lib/user_lib');
