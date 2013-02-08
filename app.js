@@ -31,9 +31,12 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', user.login);
+
 app.get('/user/login', user.login);
-app.post('/user/new', user.new_user);
+app.post('/user/authenticate', user.authenticate);
+app.get('/user/new', user.new_user);
+app.post('/user/register', user.register);
+
 
 http.createServer(app).listen(app.get('port'), function(){
     irc_lib.create_new_client('127.0.0.1', 'testclient', {
